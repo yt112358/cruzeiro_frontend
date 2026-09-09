@@ -1,0 +1,175 @@
+/* ==========================================================================
+   1. RESETS E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: #333333;
+  background-color: #f9f9f9;
+}
+
+/* Container centralizado para limitar a largura do conteúdo */
+main {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO (HEADER) E NAVEGAÇÃO
+   ========================================================================== */
+header {
+  background-color: #2c3e50;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: white;
+}
+
+nav ul {
+  list-style: none;
+  display: inline-block;
+  justify-content: left;
+  gap: 20px;
+}
+
+nav div {
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #f39c12;
+}
+
+/* ==========================================================================
+   3. SEÇÕES E ARTIGOS
+   ========================================================================== */
+section {
+  background: #ffffff;
+  padding: 30px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+/* Formatação para imagens */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 15px 0;
+  display: block;
+}
+
+/* Cartões para projetos / artigos */
+article {
+  background-color: #f4f6f7;
+  padding: 20px;
+  border-left: 4px solid #3498db;
+  margin-bottom: 20px;
+  border-radius: 0 6px 6px 0;
+}
+
+/* ==========================================================================
+   4. LISTAS E DESTAQUES
+   ========================================================================== */
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+input.long-input {
+  field-sizing: content; /* O input cresce automaticamente conforme o texto */
+  min-width: 50%;       /* Largura mínima para o placeholder */
+  max-width: 100%;      /* Evita que ele estoure a tela */
+}
+
+input.short-input {
+  field-sizing: content; /* O input cresce automaticamente conforme o texto */
+  min-width: 2ch;       /* Largura mínima para o placeholder */
+  max-width: 100%;      /* Evita que ele estoure a tela */
+}
+
+fieldset {
+  padding: 0px 20px 5px 20px; /* Applies 20px padding to all four sides */
+}
+
+input[type="radio"] {
+  margin-left: 12px
+}
+
+input[type="submit"] {
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+div.form-actions {
+  margin-top: 5px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  height: 20px;           /* Gives the container full screen height */
+
+}
+/* ==========================================================================
+   5. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+  background-color: #2c3e50;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   6. RESPONSIVIDADE SIMPLES (MOBILE)
+   ========================================================================== */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  section {
+    padding: 15px;
+  }
+}
