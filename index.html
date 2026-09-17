@@ -4,6 +4,7 @@
 <head>
   <title>ONG Esperança</title>
   <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -16,12 +17,30 @@
         vulnerabilidade.
         Nossa missão é transformar vidas por meio da educação e da solidariedade.
       </p>
-      <nav>
+      <!-- <nav>
         <div>
           <a href="projects.html">Detalhes dos Projetos ⤴️</a>
         </div>
         <div><a href="cadastro.html">Cadastre-se ⤴️</a></div>
+      </nav> -->
+      <nav class="nav-menu">
+        <div>ONG Esperança</div>
+        <input type="checkbox" name="hamburger" id="hamburger" class="hamburger-menu_input" />
+        <label for="hamburger" class="hamburger-menu_bg">X</label>
+        <ul class="nav-menu-ul hamburger-menu_list">
+          <li class="nav-menu-item"><a href="#" class="nav-menu-item-link">HOME</a></li>
+          <li class="nav-menu-item"><a href="projects.html" class="nav-menu-item-link">Detalhes dos Projetos</a></li>
+          <li class="nav-menu-item"><a href="cadastro.html" class="nav-menu-item-link">Cadastre-se</a></li>
+          <li class="nav-menu-item"><a href="#" class="nav-menu-item-link">Menu1</a></li>
+          <li class="nav-menu-item"><a href="#" class="nav-menu-item-link">Menu2</a></li>
+        </ul>
       </nav>
+
+      <label for="hamburger" class="hamburger-menu_button">
+        <span class="hamburger-menu_button-mark">&nbsp;</span>
+        <span class="hamburger-menu_button-mark">&nbsp;</span>
+        <span class="hamburger-menu_button-mark">&nbsp;</span>
+      </label>
     </header>
 
     <!-- Seção de Contato -->

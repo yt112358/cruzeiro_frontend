@@ -8,6 +8,7 @@
   <script src="js/phone.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="js/submit.js"></script>
 </head>
 
 <body>
@@ -30,13 +31,13 @@
           <legend>Gênero:</legend>
           <div class="radio-group">
             <label class="radio-label">
-              <input type="radio" name="sample"> Feminino
+              <input type="radio" name="sample" required> Feminino
             </label>
             <label class="radio-label">
-              <input type="radio" name="sample"> Masculino
+              <input type="radio" name="sample" required> Masculino
             </label>
             <label class="radio-label">
-              <input type="radio" name="sample"> Outro
+              <input type="radio" name="sample" required> Outro
               <input class="long-input" type="text" id="genero-outro" name="genero-outro"
                 placeholder="Especifique se outro">
             </label>
@@ -44,11 +45,20 @@
         </fieldset>
         <fieldset>
           <legend>Data de Nascimento:</legend>
-          <input type="text" id="datepicker" placeholder="DD/MM/YYYY">
+          <input type="text" id="datepicker" placeholder="DD/MM/YYYY" required>
           <script>
             flatpickr("#datepicker", {
               dateFormat: "d/m/Y",
+              onClose: function (selectedDates, dateStr, instance) {
+                const inputEl = instance.element;
+                if (selectedDates.length == 0) {
+                  inputEl.classList.add('is-invalid');
+                } else {
+                  inputEl.classList.remove('is-invalid');
+                }
+              }
             });
+
           </script>
 
         </fieldset>
