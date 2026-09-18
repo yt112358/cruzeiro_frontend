@@ -10,13 +10,13 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
-  color: #333333;
+  color: #2c3e50;
   background-color: #f9f9f9;
 }
 
 /* Container centralizado para limitar a largura do conteúdo */
 main {
-  max-width: 1100px;
+  max-width: 1800px;
   margin: 20px auto;
   padding: 0 20px;
 }
@@ -127,8 +127,26 @@ fieldset {
   padding: 0px 20px 5px 20px; /* Applies 20px padding to all four sides */
 }
 
+input:focus {
+  background-color: #e0f7fa; /* アクティブ時の背景色 */
+}
+
+input:user-invalid {
+  border-color: #ff0000;
+  background-color: #fff0f0;
+}
+
 input[type="radio"] {
   margin-left: 12px
+}
+
+input[type="radio"]:user-invalid {
+  outline: 2px solid red;
+}
+
+.flatpickr-input.is-invalid {
+  border: 2px solid red !important;
+  background-color: #fff0f0 !important;
 }
 
 input[type="submit"] {
@@ -160,16 +178,279 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ==========================================================================
-   6. RESPONSIVIDADE SIMPLES (MOBILE)
-   ========================================================================== */
-@media (max-width: 600px) {
-  nav ul {
+.container {
+  margin: 0 auto;
+}
+.container div {
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding: 5px;
+  border-radius: 8px;
+  flex-grow: 0;
+  max-width: calc(8% - 5px); /* 12 colunas com espaçamento */
+  min-width: calc(8% - 5px); 
+  flex: calc(8% - 5px); /* 12 colunas com espaçamento */
+}
+
+.grid-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  flex-direction: row;
+}
+
+.nav-menu {
+  background-color: #2c3e50;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-menu-ul {
+  box-sizing: border-box;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+ 
+.nav-menu-item {
+  list-style: none;
+}
+ 
+.nav-menu-item-link {
+  color: white;
+  display: block;
+  margin-right: 20px;
+  text-decoration: none;
+  padding: 10px 0;
+}
+ 
+.nav-menu-item-link:hover {
+  filter: opacity(0.6);
+}
+
+/* SMARTPHONES GRANDES / PHABLETS (480px a 767px) */
+@media (min-width: 480px) {
+  body {
+    font-size: 15px;
+    padding: 16px;
+  }
+}
+
+
+/*  3. TABLETS (768px a 1023px) */
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+    padding: 24px;
+  }
+  .grid-item {
+    background-color: #f4f6f7;
+    padding: 5px;
+    border-radius: 8px;
+    flex: calc(8% - 5px); /* 12 colunas com espaçamento */
+  }
+}
+
+
+/* 4. DESKTOPS / LAPTOPS (1024px a 1439px) */
+@media (min-width: 1024px) {
+  body {
+    padding: 32px;
+  }
+
+  .container {
+    max-width: 960px;
+  }
+}
+
+
+/* TELAS GRANDES / MONITORES WIDESCREEN (1440px ou mais) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+
+/* hambúrguer menu */
+.c-hamburger-menu {
+  position: relative;
+}
+
+ 
+/* Check box para trocar estado do menu */
+.hamburger-menu_input {
+  display: none;
+}
+ 
+/* Botão para fechar o menu. Invisível */
+.hamburger-menu_bg {
+  background-color: grey;
+  cursor: pointer;
+  display: none;
+  height: 30px;
+  right: 0;
+  opacity: 0.4;
+  position: relative;
+  bottom: 0;
+  width: 30px;
+  z-index: 1;
+  opacity: 0;
+}
+ 
+/* Botão para fechar o menu. Visível */
+#hamburger:checked ~ .hamburger-menu_bg {
+  display: block;
+  text-align: center;
+  right: 0;
+  bottom: -30px;
+  position: absolute;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+
+  /* Animação de fade-in */
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+/** Fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+ 
+/* Hamburger button */
+.hamburger-menu_button {
+  display: none;
+}
+ 
+/* Hamburger button lines */
+.hamburger-menu_button-mark {
+  background-color: white;
+  display: block;
+  height: 1px;
+  transition: 0.3s;
+  width: 20px;
+}
+ 
+
+/* Menu slide-in */
+@media (max-width: 480px) {
+  .hamburger-menu_list {
+    background-color: #eeeeee;
+    align-items: flex-start;
+    display: flex;
     flex-direction: column;
-    gap: 10px;
+    left: 0;
+    padding: 2rem;
+    position: absolute;
+    transform: translateX(-100%);
+    transition: 0.3s;
+    top: 100%;
+    width: 100%;
   }
   
-  section {
-    padding: 15px;
+ 
+  /* Menu slide-in */
+  #hamburger:checked ~ .hamburger-menu_list {
+    transform: translateX(0%);
+    transition: 0.3s;
   }
+
+  .nav-menu-item-link {
+    color: black;
+  }
+
+  /* Hamburger button for Smartphone */
+  .hamburger-menu_button {
+    color: grey;
+    align-items: center;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+  }
+}
+
+/** Modal dialog */
+dialog {
+  width: 80vw;
+  max-width: 90vw;
+  max-height: 100vh;
+  border: none;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  inset: 0;
+  margin: auto;
+}
+
+/* Background overlay */
+dialog::backdrop {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+} */
+
+/* .modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+} */
+
+/* モーダル内のz-index調整（カレンダーが下に隠れないようにする） */
+.flatpickr-calendar {
+  z-index: 9999 !important;
+}
+
+.datepicker-fieldset {
+  position: relative;
 }
