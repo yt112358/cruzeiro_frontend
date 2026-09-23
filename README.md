@@ -1,9 +1,8 @@
 **# Cruzeiro Frontend 🚢
 
-Uma aplicação web moderna para a interface de usuário do projeto **Cruzeiro**.
+Uma aplicação web moderna para a interface de usuário do projeto de tarefa da faculdade **Cruzeiro do Sul**.
 
 ![Status do Projeto](https://img.shields.io/badge/status-em__desenvolvimento-yellow?style=for-the-badge)
-![Licença](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
 
 ---
 
@@ -25,4 +24,3 @@ O **Cruzeiro Frontend** é a camada de interface e experiência do usuário (UI/
 - 📱 **Design Responsivo:** Adaptado para dispositivos móveis, tablets e desktops.
 - ⚡ **Alta Performance:** Carregamento otimizado de páginas e componentes.
 - 🎨 **Interface Intuitiva:** Componentes estilizados focados na experiência do usuário.
-- 
