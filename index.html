@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/dialog.js"></script>
     <script src="js/form.js"></script>
+    <script src="js/visual.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
@@ -16,6 +17,7 @@
     <main>
         <header>
             <h1>Sobre a ONG Esperança</h1>
+            <button id="theme-toggle">Modo escro</button>
             <img src="images/ong.jpeg" alt="Voluntários da ONG Esperança reunidos sorrindo durante uma ação social">
             <p>
                 A ONG Esperança atua desde 2010 promovendo a inclusão social e o apoio a famílias em situação de
@@ -27,17 +29,19 @@
                 <input type="checkbox" name="hamburger" id="hamburger" class="hamburger-menu_input" />
                 <label for="hamburger" class="hamburger-menu_bg">X</label>
                 <ul class="nav-menu-ul hamburger-menu_list">
-                    <li class="nav-menu-item"><a onclick="openDialog('project');" class="nav-menu-item-link">Detalhes
+                    <li class="nav-menu-item">
+                        <a href="#" onclick="openDialog('project');" class="nav-menu-item-link">Detalhes
                             dos
-                            Projetos</a></li>
-                    <li class="nav-menu-item"><a onclick="openRegisterDialog();"
+                            Projetos</a>
+                    </li>
+                    <li class="nav-menu-item"><a href="#" onclick="openRegisterDialog();"
                             class="nav-menu-item-link">Cadastre-se</a></li>
                     <li class="nav-menu-item"><a href="#" class="nav-menu-item-link">Menu1</a></li>
                     <li class="nav-menu-item"><a href="#" class="nav-menu-item-link">Menu2</a></li>
                 </ul>
             </nav>
 
-            <label for="hamburger" class="hamburger-menu_button">
+            <label for="hamburger" class="hamburger-menu_button" role="navigation" aria-label="Menu">
                 <span class="hamburger-menu_button-mark">&nbsp;</span>
                 <span class="hamburger-menu_button-mark">&nbsp;</span>
                 <span class="hamburger-menu_button-mark">&nbsp;</span>
@@ -45,7 +49,7 @@
         </header>
 
         <!-- Seção de Contato -->
-        <section id="contato">
+        <section>
             <h2>Entre em Contato</h2>
             <p>Fale conosco para saber como ajudar, ser um voluntário ou tirar dúvidas:</p>
             <p>
@@ -61,7 +65,7 @@
 
     <template id="modal-template">
         <h1 class="modal-title">title</h1>
-        <div class="modal-content">Conteúdo</div>
+        <div class="modal-content" aria-live="assertive">Conteúdo</div>
         <div class="modal-actions">
             <button commandfor="modal" command="close">Fechar</button>
         </div>
@@ -80,19 +84,21 @@
                     <fieldset>
                         <legend>Nome Completo:</legend>
                         <input class="long-input" type="text" id="nome" name="nome" minlength="2" maxlength="100"
-                            required>
+                            required aria-required="true">
                     </fieldset>
                     <fieldset>
                         <legend>Gênero:</legend>
                         <div class="radio-group">
                             <label class="radio-label">
-                                <input type="radio" name="gender" value="Feminino" required> Feminino
+                                <input type="radio" name="gender" value="Feminino" required aria-required="true">
+                                Feminino
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="gender" value="Masculino" required> Masculino
+                                <input type="radio" name="gender" value="Masculino" required aria-required="true">
+                                Masculino
                             </label>
                             <label class="radio-label">
-                                <input type="radio" name="gender" value="Outro" required> Outro
+                                <input type="radio" name="gender" value="Outro" required aria-required="true"> Outro
                                 <input class="long-input" type="text" id="other-gender" name="other-gender"
                                     placeholder="Especifique se outro">
                             </label>
@@ -100,13 +106,14 @@
                     </fieldset>
                     <fieldset class="datepicker-fieldset">
                         <legend>Data de Nascimento:</legend>
-                        <input type="text" id="datepicker" placeholder="DD/MM/YYYY" required>
+                        <input type="text" id="datepicker" placeholder="DD/MM/YYYY" required aria-required="true">
                         <div></div>
                     </fieldset>
                     <fieldset>
                         <legend>CPF:</legend>
                         <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" autocomplete="off"
                             maxlength="14" inputmode="numeric" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required
+                            aria-required="true"
                             onblur="if(validarCPF(this.value)) { this.value = formatarCPF(this.value); }">
                     </fieldset>
                 </fieldset>
@@ -116,12 +123,12 @@
                         <legend>Telefone:</legend>
                         <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000"
                             autocomplete="off" maxlength="15" inputmode="numeric" pattern="\(\d{2}\) \d{4,5}-\d{4}"
-                            required onblur="this.value = formatarTelefone(this.value);">
+                            required onblur="this.value = formatarTelefone(this.value);" aria-required="true">
                     </fieldset>
                     <fieldset>
                         <legend>e-mail:</legend>
                         <input class="long-input" type="email" id="email" name="email"
-                            placeholder="seu.email@exemplo.com" required>
+                            placeholder="seu.email@exemplo.com" required aria-required="true">
                     </fieldset>
                 </fieldset>
                 <div class="form-actions">

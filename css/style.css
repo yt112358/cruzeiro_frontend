@@ -7,11 +7,50 @@
   box-sizing: border-box;
 }
 
+/* Estilo defalt */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --btn-bg: #e0e0e0;
+}
+
+/* Preferencia do usuário */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --btn-bg: #333333;
+  }
+}
+
+/* Escolha manual */
+html.dark {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --btn-bg: #333333;
+}
+
+html.light {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --btn-bg: #e0e0e0;
+}
+
+/* estilo com variável */
 body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
   line-height: 1.6;
-  color: #2c3e50;
-  background-color: #f9f9f9;
 }
 
 /* Container centralizado para limitar a largura do conteúdo */
@@ -65,15 +104,20 @@ nav a:hover {
    3. SEÇÕES E ARTIGOS
    ========================================================================== */
 section {
-  background: #ffffff;
+  background: var(--bg-color);
   padding: 30px;
   margin-bottom: 25px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
+section.form-section {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 h1, h2, h3 {
-  color: #2c3e50;
+  color: var(--text-color);
   margin-bottom: 15px;
 }
 
@@ -92,7 +136,7 @@ img {
 
 /* Cartões para projetos / artigos */
 article {
-  background-color: #f4f6f7;
+  background-color: var(--bg-color);
   padding: 20px;
   border-left: 4px solid #3498db;
   margin-bottom: 20px;
@@ -128,7 +172,7 @@ fieldset {
 }
 
 input:focus {
-  background-color: #e0f7fa; /* アクティブ時の背景色 */
+  background-color: #e0f7fa;
 }
 
 input:user-invalid {
@@ -151,7 +195,7 @@ input[type="radio"]:user-invalid {
 
 input[type="submit"] {
   background-color: #3498db;
-  color: #ffffff;
+  color: var(--text-color);
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -183,7 +227,7 @@ footer {
 }
 .container div {
   margin-bottom: 20px;
-  background-color: #f9f9f9;
+  background-color: var(--bg-color);
   padding: 5px;
   border-radius: 8px;
   flex-grow: 0;
@@ -393,6 +437,8 @@ footer {
 
 /** Modal dialog */
 dialog {
+  background-color: var(--bg-color);
+  color: var(--text-color);
   width: 80vw;
   max-width: 90vw;
   max-height: 100vh;
@@ -424,6 +470,8 @@ dialog::backdrop {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  background-color: grey;
+  color: white;
 }
 
 /* .modal-overlay {
