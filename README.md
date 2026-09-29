@@ -36,8 +36,16 @@ O **Cruzeiro Frontend** é a camada de interface e experiência do usuário (UI/
    ```bash
    git clone https://github.com/yt112358/cruzeiro_frontend.git
    ```
+
+2. **Rode vite server**
+   ```
+   npm install
+   npm run build
+   npm run dev
+   ```
 2. **Acesse no navegador:**
-   Abra o arquivo index.html em um navegador de internet como o Chrome.
+   Abra seguinte URL por navegador.
+   http://localhost:5173/cruzeiro_frontend/
 
 ---
 
