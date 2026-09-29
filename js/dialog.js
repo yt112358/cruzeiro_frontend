@@ -1,63 +1,52 @@
-function openDialog(domId) {
-  let modalWindow = document.getElementById(domId);
+export function openProjectDialog() {
+  let modalWindow = document.getElementById("project");
   modalWindow.showModal();
 }
 
-function openRegisterDialog() {
+export function openRegisterDialog() {
   let modalWindow = document.getElementById("register");
   let datepickerFieldset = modalWindow.querySelector(".datepicker-fieldset");
   modalWindow.showModal();
   loadSaveData();
 
-  let submitBtn = document.getElementById("submitBtn");
-  submitBtn != null &&
-    submitBtn.addEventListener("click", (e) => {
-      e.preventDefault();
+  const submitBtn = document.getElementById("submitBtn");
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
 
-      if (form.checkValidity()) {
-        let cpfInput = document.getElementById("cpf");
-        let telefoneInput = document.getElementById("telefone");
+    if (form.checkValidity()) {
+      const cpfInput = document.getElementById("cpf");
+      const telefoneInput = document.getElementById("telefone");
 
-        // Formata o CPF e o telefone antes de validar
-        cpfInput.value = formatarCPF(cpfInput.value);
-        telefoneInput.value = formatarTelefone(telefoneInput.value);
+      // let gender = document.getElementById("gender").value;
+      const gender = document.querySelector('input[name="gender"]:checked');
+      const otherGender =
+        gender.value === "Outro"
+          ? document.getElementById("other-gender").value
+          : "";
 
-        if (!validarCPF(cpfInput.value)) {
-          alert("CPF inválido!");
-          return;
-        }
+      // Se tudo estiver válido, você pode salvar os dados no localStorage ou fazer outra ação
+      let formData = {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        gender: gender.value,
+        otherGender: otherGender,
+        telefone: telefoneInput.value,
+        cpf: cpfInput.value,
+        dataNascimento: document.getElementById("datepicker").value,
+      };
 
-        // let gender = document.getElementById("gender").value;
-        const gender = document.querySelector('input[name="gender"]:checked');
-        const otherGender =
-          gender.value === "Outro"
-            ? document.getElementById("other-gender").value
-            : "";
-
-        // Se tudo estiver válido, você pode salvar os dados no localStorage ou fazer outra ação
-        let formData = {
-          nome: document.getElementById("nome").value,
-          email: document.getElementById("email").value,
-          gender: gender.value,
-          otherGender: otherGender,
-          telefone: telefoneInput.value,
-          cpf: cpfInput.value,
-          dataNascimento: document.getElementById("datepicker").value,
-        };
-
-        localStorage.setItem("formData", JSON.stringify(formData));
-        console.log("save");
-        templateDialog(
-          "Cadastro realizado com sucesso!",
-          "Seus dados foram salvos com sucesso.",
-        );
-      } else {
-        templateDialog(
-          "Erro no formulário!",
-          "Por favor, preencha todos os campos corretamente.",
-        );
-      }
-    });
+      localStorage.setItem("formData", JSON.stringify(formData));
+      templateDialog(
+        "Cadastro realizado com sucesso!",
+        "Seus dados foram salvos com sucesso.",
+      );
+    } else {
+      templateDialog(
+        "Erro no formulário!",
+        "Por favor, preencha todos os campos corretamente.",
+      );
+    }
+  });
   let datepickerInstance = null;
   if (!datepickerInstance) {
     datepickerInstance = flatpickr("#datepicker", {
@@ -93,8 +82,6 @@ function loadSaveData() {
     );
     document.getElementById("other-gender").value = formData.otherGender;
 
-    console.log("gender", formData.gender, gender);
-
     if (gender) {
       gender.checked = true;
     }
@@ -107,7 +94,13 @@ function templateDialog(title, content) {
   clone.querySelector(".modal-title").textContent = title;
   clone.querySelector(".modal-content").textContent = content;
 
-  var modalWindow = document.getElementById("modal");
+  const modalWindow = document.getElementById("modal");
+  if (modalWindow && modalWindow.children) {
+    Array.from(modalWindow.children).forEach((child) => {
+      child.remove();
+    });
+  }
+
   modalWindow.append(clone);
   modalWindow.showModal();
 }

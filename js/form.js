@@ -1,6 +1,7 @@
-function validarCPF(cpf) {
+export function validarCPF(e) {
+  // onblur="if(validarCPF(this.value)) { this.value = formatarCPF(this.value); }"
   // Remove caracteres não numéricos
-  cpf = cpf.replace(/[^\d]/g, "");
+  const cpf = e.target.value.replace(/[^\d]/g, "");
 
   // CPF precisa ter exatamente 11 dígitos
   if (cpf.length !== 11) return false;
@@ -26,18 +27,20 @@ function validarCPF(cpf) {
   if (resto === 10 || resto === 11) resto = 0;
   if (resto !== parseInt(cpf.charAt(10))) return false;
 
-  return true;
+  const formatedCpf = formatarCPF(cpf);
+  e.target.value = formatedCpf;
 }
 
-function formatarCPF(cpf) {
+export function formatarCPF(cpf) {
   // Remove caracteres não numéricos
-  cpf = cpf.replace(/[^\d]/g, "");
+  const formatedCpf = cpf.replace(/[^\d]/g, "");
 
   // Formata o CPF no padrão 000.000.000-00
-  return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+  return formatedCpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
 }
 
-function formatarTelefone(telefone) {
+export function formatarTelefone(e) {
+  const telefone = e.target.value;
   let valor = telefone.replace(/\D/g, ""); // Remove tudo que não for dígito
 
   if (valor.length > 11) {
@@ -59,5 +62,5 @@ function formatarTelefone(telefone) {
     valor = valor.replace(/^(\d*)/, "($1");
   }
 
-  return valor;
+  e.target.value = valor;
 }
